@@ -1,0 +1,5 @@
+# ignore .env files
+.env
+
+# ignore test file
+test.py
