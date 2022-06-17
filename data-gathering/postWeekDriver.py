@@ -95,7 +95,7 @@ for game in games:
     infoArray = uploadToMongo.getBasicGameInfo(gameID)
     homeColor = infoArray[0]
     awayColor = infoArray[1]
-    year = infoArray[2]
+    dbYear = infoArray[2]
     month = infoArray[3]
     day = infoArray[4]
     startTime = infoArray[5]
@@ -103,7 +103,7 @@ for game in games:
     quarter = 6
 
 # # upload to db
-    uploadToMongo.sendToDB(quarter, startTime, homeColor, awayColor, homeTeam, awayTeam, finalScoreScore, finalImportanceScore, finalExplosivePlaysScore, finalTalentScore, finalPenaltyScore, timeSlot, gameID, year, month, day, week)
+    uploadToMongo.sendToDB(quarter, startTime, homeColor, awayColor, homeTeam, awayTeam, finalScoreScore, finalImportanceScore, finalExplosivePlaysScore, finalTalentScore, finalPenaltyScore, timeSlot, gameID, dbYear, month, day, week)
 
 # # TEST DELETE LATER:!!!!!!!
 

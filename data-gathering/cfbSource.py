@@ -118,6 +118,7 @@ def calcSpreadScore(homeTeam, awayTeam, currentCloseness):
         print("/nException when calling BettingApi->get_lines: %s\n" % e)
         return 0
 
+
 def calcImportanceScore(homeTeam, awayTeam, date):
 
     homeTeam = formatTeam(homeTeam)
