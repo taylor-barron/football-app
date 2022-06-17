@@ -54,27 +54,33 @@ def getBasicGameInfo(gameID):
     else:
         timeSlot = "Late"
 
-    return homeColor, awayColor, year, month, day, timeSlot
+    return homeColor, awayColor, year, month, day, time, timeSlot
 
 # # Upload game info to db # #
-def sendToDB(period, startTime, homeColor, awayColor, homeTeam, awayTeam):# date, timeSlot, gameID):
+def sendToDB(quarter, startTime, homeColor, awayColor, homeTeam, awayTeam, scoreScore, importanceScore, explosivenessScore, talentScore, penaltyScore, timeSlot, gameID, year, month, day, week):
     client = pymongo.MongoClient(config['MONGO_CLIENT'])
+    db = client[year]
+    collection = db[week]
 
-    db = client["2021"]
-    collection = db["week1"]
-    date = "2021-09-03"
-    timeSlot = "Early"
-    gameID = "5850725"
-    period = 6
+    date = month + "-" + day
 
+    gameIDArray = gameID.split("/")
+    gameID = int(gameIDArray[2])
+
+    # quarter can be 1-4 obviously or 5 for OT or 6 for completed
     gameInfo = {
 
-        "period": period,
+        "quarter": quarter,
         "startTime": startTime,
         "homeColor": homeColor,
         "awayColor": awayColor,
         "homeTeam": homeTeam,
         "awayTeam": awayTeam,
+        "scoreScore": scoreScore,
+        "importanceScore": importanceScore,
+        "explosivenessScore": explosivenessScore,
+        "talentScore": talentScore,
+        "penaltyScore": penaltyScore
     }
 
     collection.find_one_and_update(
