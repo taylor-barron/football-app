@@ -3,3 +3,6 @@
 
 # ignore test file
 test.py
+
+# ignore all node modules
+middleware/node_modules
