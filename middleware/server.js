@@ -78,4 +78,4 @@ app.post('/games', (req, res) => {
     getGames(client, year, week, res)
 })
 
-app.listen(4000)
+app.listen( process.env.PORT || 4000 )
