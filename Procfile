@@ -1,1 +1,1 @@
-web: ./middleware node server.js
+web: cd ./middleware && node server.js
