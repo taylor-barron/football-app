@@ -1,5 +1,6 @@
 {
     "scripts": {
-        "heroku-prebuild": "cd middleware"
+        "heroku-prebuild": "cd middleware",
+        "start": "node server.js"
     }
 }
