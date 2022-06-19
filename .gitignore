@@ -6,3 +6,4 @@ test.py
 
 # ignore all node modules
 middleware/node_modules
+frontend/node_modules
