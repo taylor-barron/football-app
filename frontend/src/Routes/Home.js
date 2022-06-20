@@ -8,6 +8,7 @@ const Home = () => {
             <p>
                 the anti-score college football website. 
             </p>
+            <a href="/years">Check out ratings here</a>
         </div>
     )
 }

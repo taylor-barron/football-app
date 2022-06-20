@@ -18,6 +18,7 @@ const Games = () => {
 
     return (
         <div>
+            <a href="/">Home</a>
             {dates.map((games, index) => (
                 <Date key={index} games={games} />
             ))}
