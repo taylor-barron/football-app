@@ -11,6 +11,7 @@ const Games = () => {
     useEffect(() => {
         
         GetGames({week, year}).then((res) => {
+            console.log(res)
             setDates(SortByDate(res));
         })
 

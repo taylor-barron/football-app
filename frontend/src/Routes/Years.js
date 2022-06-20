@@ -17,7 +17,7 @@ const Years = () => {
         <div>
             {years.map((year, index) => (
                 <Year key={index} year={year} />
-                ))}
+            ))}
         </div>
     )
 }

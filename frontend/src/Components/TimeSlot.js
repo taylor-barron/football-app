@@ -1,12 +1,21 @@
+import { useEffect, useState } from "react";
+import SortByGameRating from "../Functions/SortByGameRating";
+import Game from "./Game";
 
-const TimeSlot = ({ games }) => {
+const TimeSlot = ({ gamesArray }) => {
+    const [ games, setGames ] = useState([])
+
+    useEffect(() => {
+
+        setGames(SortByGameRating( gamesArray ))
+        
+    }, [])
 
     return (
         <div>
-            {games[0].gameInfo.awayTeam}
-            {games[0].date}
-            {games[0].timeSlot}
-            {games[0].gameInfo.scoreScore}
+            {games.map((game, index) => (
+                <Game key={index} game={game} />
+            ))}
         </div>
     )
 
