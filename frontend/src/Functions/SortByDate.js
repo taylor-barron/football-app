@@ -14,6 +14,8 @@ const SortByDate = (games) => {
             dates.push(games[i])
         }
     }
+    allDates.push(dates)
+    console.log(allDates)
 
     return allDates;
 }

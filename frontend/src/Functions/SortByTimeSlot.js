@@ -14,6 +14,7 @@ const SortByTimeSlot = (games) => {
             timeSlot.push(games[i])
         }
     }
+    allTimeSlots.push(timeSlot)
 
     return allTimeSlots
 }

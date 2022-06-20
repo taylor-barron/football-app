@@ -8,7 +8,7 @@ const TimeSlot = ({ gamesArray }) => {
     useEffect(() => {
 
         setGames(SortByGameRating( gamesArray ))
-        
+
     }, [])
 
     return (
