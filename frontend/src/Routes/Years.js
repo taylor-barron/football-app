@@ -8,7 +8,7 @@ const Years = () => {
     useEffect(() => {
 
         GetYears().then((res) => {
-            setYears(res)
+            setYears(res);
         })
 
     }, [])
@@ -23,10 +23,3 @@ const Years = () => {
 }
 
 export default Years;
-
-/*
-
-            {years.map((year, index) => (
-                <Year key={index} year={year} />
-            ))}
-*/
