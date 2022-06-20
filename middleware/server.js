@@ -22,7 +22,8 @@ app.get('/years', (req, res) => {
         try {
             await client.connect();
             const years = await client.db("Years").collection("Years").find().toArray()
-            res.json(years);
+
+            res.send(years)
         } catch(e) {
             console.error(e)
         } finally {
@@ -37,7 +38,7 @@ app.get('/years', (req, res) => {
 app.post('/weeks', (req, res) => {
     const uri = process.env.MONGO_DB
     const client = new MongoClient(uri);
-    year = req.body.year
+    year = req.body.year.year
 
     async function getWeeks(client, year, res) {
 
