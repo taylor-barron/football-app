@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import GetWeeks from "../Functions/GetWeeks";
+import Week from "../Components/Week";
 
 const Weeks = () => {
     const {year} = useParams();
@@ -16,7 +17,9 @@ const Weeks = () => {
 
     return (
         <div>
-            weeks go here {year} 
+            {weeks.map((week, index) => (
+                <Week key={index} week={week.name} />
+            ))}
         </div>
     )
 }

@@ -1,6 +1,4 @@
 
-// import get weeks or something
-
 const Year = ({ year }) => {
 
     return (

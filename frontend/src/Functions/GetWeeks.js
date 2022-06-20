@@ -12,7 +12,6 @@ const GetWeeks = async (year) => {
     })
 
     const weeks = await res.json()
-    console.log(weeks)
 
     return weeks
 }
