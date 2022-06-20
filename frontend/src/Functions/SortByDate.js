@@ -15,7 +15,6 @@ const SortByDate = (games) => {
         }
     }
     allDates.push(dates)
-    console.log(allDates)
 
     return allDates;
 }
