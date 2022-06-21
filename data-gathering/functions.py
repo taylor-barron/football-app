@@ -2,7 +2,7 @@ import os
 from dotenv import dotenv_values, load_dotenv
 
 load_dotenv()
-config = dotenv_values(".env")
+config = dotenv_values("data-gathering/.env")
 
 # get scores and times of scores
 def getTimeAndScoreArrays(gameJSON):
@@ -92,26 +92,54 @@ def calcGamePercentage(quarter, currentTime):
     if quarter == "1ST QUARTER":
         newTimeMarker = currentTime
         splitTimeMarker = (newTimeMarker.split(":"))
-        minutesPercentage = float(splitTimeMarker[0]) / 15
-        secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        try:
+            minutesPercentage = float(splitTimeMarker[0]) / 15
+        except:
+            minutesPercentage = 0
+        try:
+            secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        except:
+            secondsPercentage = 0
+
         totalTimePercentage = 25 * (1 - (minutesPercentage + secondsPercentage))
     elif quarter == "2ND QUARTER":
         newTimeMarker = currentTime
         splitTimeMarker = (newTimeMarker.split(":"))
-        minutesPercentage = float(splitTimeMarker[0]) / 15
-        secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        try:
+            minutesPercentage = float(splitTimeMarker[0]) / 15
+        except:
+            minutesPercentage = 0
+        try:
+            secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        except:
+            secondsPercentage = 0
+            
         totalTimePercentage = 25 + (25 * (1 - (minutesPercentage + secondsPercentage)))
     elif quarter == "3RD QUARTER":
         newTimeMarker = currentTime
         splitTimeMarker = (newTimeMarker.split(":"))
-        minutesPercentage = float(splitTimeMarker[0]) / 15
-        secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        try:
+            minutesPercentage = float(splitTimeMarker[0]) / 15
+        except:
+            minutesPercentage = 0
+        try:
+            secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        except:
+            secondsPercentage = 0
+            
         totalTimePercentage = 50 + (25 * (1 - (minutesPercentage + secondsPercentage)))
     elif quarter == "4TH QUARTER":
         newTimeMarker = currentTime
         splitTimeMarker = (newTimeMarker.split(":"))
-        minutesPercentage = float(splitTimeMarker[0]) / 15
-        secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        try:
+            minutesPercentage = float(splitTimeMarker[0]) / 15
+        except:
+            minutesPercentage = 0
+        try:
+            secondsPercentage = float(splitTimeMarker[1]) / 60 / 15
+        except:
+            secondsPercentage = 0
+            
         totalTimePercentage = 75 + (25 * (1 - (minutesPercentage + secondsPercentage)))
     elif quarter == "OT":
         totalTimePercentage = 100
@@ -229,6 +257,7 @@ def calcExplosivePlays(gameJSON):
                                 rushLength = ''
                                 for idx in range(idx1 + len(sub1) + 1, idx2):
                                     rushLength = rushLength + playText[idx]
+                                print(rushLength)
                             
                             # handle exception for rush plays with loss or no gain
                             except:
@@ -254,7 +283,7 @@ def calcExplosivePlays(gameJSON):
                             elif rushLength >= 10:
                                 explosiveScore += 1
                 
-                    elif "pass complete" in playText:
+                    elif "pass complete" in playText or "complete to" in playText:
                         try:
                             # substrings
                             sub1 = " for"
@@ -311,10 +340,56 @@ def calcExplosivePlays(gameJSON):
                                 print("kickoff error", e)
                                 print(playText)
 
+                    elif "kicks" in playText and "touchback" not in playText and "fair catch" not in playText:
+                        try:
+                            playTextArray = playText.split("for ")
+                            useablePlayTextArray = playTextArray[1].split()
+                            returnLength = int(useablePlayTextArray[0])
+
+                            if returnLength > 60:
+                                explosiveScore += 5
+                            elif returnLength > 50:
+                                explosiveScore += 4
+                            elif returnLength > 40:
+                                explosiveScore += 3
+                        # handle exception for muffed catch
+                        except:
+                            try:
+                                if "muffed" in playText:
+                                    explosiveScore += 1
+                            # handle unknown exception by logging to console
+                            except Exception as e:
+                                print("kickoff error", e)
+                                print(playText)
+
                     elif "punt" in playText and "return" in playText:
 
                         try:
                             playTextArray = playText.split("return ")
+                            useablePlayTextArray = playTextArray[1].split()
+                            returnLength = int(useablePlayTextArray[0])
+                    
+                            returnLength = int(returnLength)
+                            if returnLength > 40:
+                                explosiveScore += 4
+                            elif returnLength > 30:
+                                explosiveScore += 3
+                            elif returnLength > 20:
+                                explosiveScore += 2
+                        # handle exception for muffed catch
+                        except:
+                            try:
+                                if "muffed" in playText:
+                                    explosiveScore += 1
+                            # handle unknown exception by logging to console
+                            except Exception as e:
+                                print("punt error", e)
+                                print(playText)
+
+                    elif "punt" in playText and "out of bounds" not in playText and "fair catch" not in playText and "Downed" not in playText:
+
+                        try:
+                            playTextArray = playText.split("for ")
                             useablePlayTextArray = playTextArray[1].split()
                             returnLength = int(useablePlayTextArray[0])
                     
@@ -356,19 +431,98 @@ def calcExplosivePlays(gameJSON):
                         elif kickLength > 40:
                             explosiveScore += 1
 
-                    elif "intercepted" in playText:
+                    elif "Field Goal is Good" in playText:
+
+                        playTextArray = playText.split(" ")
+                        useablePlayTextArray = playTextArray[1].split()
+                        kickLength = int(useablePlayTextArray[0])
+                    
+                        if kickLength > 60:
+                            explosiveScore += 3
+                        elif kickLength > 50:
+                            explosiveScore += 2
+                        elif kickLength > 40:
+                            explosiveScore += 1
+
+                    elif "intercepted" in playText or "INTERCEPTED" in playText:
                         explosiveScore += 4
 
-                    elif "sacked" in playText:
+                    elif "sacked" in playText or "SACKED" in playText:
                         explosiveScore += 2
 
-                    if "SAFETY" in playText:
+                    elif "for" in playText and "to" in playText and "incomplete" not in playText:
+                        try: 
+                            # substrings
+                            sub1 = " for"
+                            sub2 = " yard"
+                            # get index of substrings
+                            idx1 = playText.index(sub1)
+                            idx2 = playText.index(sub2)
+
+                            # iterate through string to extract rush
+                            rushLength = ''
+                            for idx in range(idx1 + len(sub1) + 1, idx2):
+                                rushLength = rushLength + playText[idx]
+
+                            rushLength = int(rushLength)
+
+                            if rushLength > 50:
+                                explosiveScore += 5
+                            elif rushLength > 40:
+                                explosiveScore += 4
+                            elif rushLength > 30:
+                                explosiveScore += 3
+                            elif rushLength > 20:
+                                explosiveScore += 2
+                            elif rushLength >= 10:
+                                explosiveScore += 1
+
+                        # handle alternate wording for rush plays
+                        except:
+                            try:
+                                # substrings
+                                sub1 = " gain of"
+                                sub2 = " yard"
+                                # get index of substrings
+                                idx1 = playText.index(sub1)
+                                idx2 = playText.index(sub2)
+
+                                # iterate through string to extract rush
+                                rushLength = ''
+                                for idx in range(idx1 + len(sub1) + 1, idx2):
+                                    rushLength = rushLength + playText[idx]
+
+                                rushLength = int(rushLength)
+
+                                if rushLength > 50:
+                                    explosiveScore += 5
+                                elif rushLength > 40:
+                                    explosiveScore += 4
+                                elif rushLength > 30:
+                                    explosiveScore += 3
+                                elif rushLength > 20:
+                                    explosiveScore += 2
+                                elif rushLength >= 10:
+                                    explosiveScore += 1
+                            
+                            # handle exception for rush plays with loss or no gain
+                            except:
+                                try:
+                                    if "loss" in playText or "no gain" in playText:
+                                        rushLength = 0
+
+                                # handle unknown exceptions by logging details to console
+                                except Exception as e:
+                                    print("rush error", e)
+                                    print(playText)
+
+                    if "SAFETY" in playText or "safety" in playText:
                         explosiveScore += 3
 
-                    if "TOUCHDOWN" in playText:
+                    if "TOUCHDOWN" in playText or "touchdown" in playText:
                         explosiveScore += 5
 
-                    if "fumble" in playText:
+                    if "fumble" in playText or "FUMBLE" in playText:
                         explosiveScore += 2
 
     # handle exception when individual play data is not available
@@ -376,6 +530,7 @@ def calcExplosivePlays(gameJSON):
         print("individual play data not available", e)
         explosiveScore = 25
 
+    print(explosiveScore)
     
     return (explosiveScore / 1.6)
 

@@ -4,7 +4,7 @@ import os
 from dotenv import dotenv_values, load_dotenv
 
 load_dotenv()
-config = dotenv_values(".env")
+config = dotenv_values("data-gathering/.env")
 
 # Helper method to format teams from website format to API format #
 def formatTeam(team):
@@ -50,7 +50,7 @@ def calcTalentScore(homeTeam, awayTeam):
     configuration.api_key_prefix['Authorization'] = 'Bearer'
 
     api_instance = cfbd.TeamsApi(cfbd.ApiClient(configuration))
-    talent = api_instance.get_talent(year=2021)
+    talent = api_instance.get_talent(year=int(config['YEAR']))
 
     counter = 0
     for i in talent:
@@ -85,7 +85,7 @@ def calcSpreadScore(homeTeam, awayTeam, currentCloseness):
 
     api_instance = cfbd.BettingApi(cfbd.ApiClient(configuration))
     try:
-        lines = api_instance.get_lines(year=2021, home=homeTeam, away=awayTeam)
+        lines = api_instance.get_lines(year=int(config['YEAR']), home=homeTeam, away=awayTeam)
         # _home_score & _away_score
         # # Either want a close game or blowout for under dog
         homeScore = lines[0]._home_score
@@ -115,7 +115,8 @@ def calcSpreadScore(homeTeam, awayTeam, currentCloseness):
     except Exception as e:
         # search for both teams in apiTeams.txt and team that is not there gets +spread
         # get found teams talent score and evaluate from there in two try excepts
-        print("/nException when calling BettingApi->get_lines: %s\n" % e)
+        print("Exception when calling BettingApi->get_lines: %s\n" % e)
+        print(homeTeam, awayTeam, currentCloseness)
         return 0
 
 
@@ -147,6 +148,9 @@ def calcImportanceScore(homeTeam, awayTeam, date):
             # get some historical data to combine with win percentage
             # win percentage counts for % of 10 games played
             homeImportanceScore = 20
+
+        # delete later when correct else is written for above
+        homeImportanceScore = homeWinPercentage
     
     except:
         homeImportanceScore = 0
@@ -164,6 +168,9 @@ def calcImportanceScore(homeTeam, awayTeam, date):
             awayImportanceScore = awayWinPercentage
         else:
             awayImportanceScore = 20
+
+        # delete later when a correct else is written
+        awayImportanceScore = awayWinPercentage
     
     except:
         awayImportanceScore = 0

@@ -9,15 +9,16 @@ import functions
 import uploadToMongo
 
 load_dotenv()
-config = dotenv_values(".env")
+config = dotenv_values("data-gathering/.env")
 
 ## GET SCORES ##
-
-week = "week1"
-year = 2021
+ #"week1"
+week = 'week' + config['WEEK']
+ #"2021"
+year = config['YEAR']
 
 # get page
-URL = config['STARTING_PAGE_URL']
+URL = config['STARTING_PAGE_URL'] + config['YEAR'] + '/' + config['ALT_WEEK'] + "/" + config['FINAL_MODIFIER']
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
@@ -82,7 +83,7 @@ for game in games:
 # # game importance
 
     # historical record + phase in record
-    finalImportanceScore = cfbSource.calcImportanceScore(homeTeam, awayTeam, year)
+    finalImportanceScore = cfbSource.calcImportanceScore(homeTeam, awayTeam, int(config['YEAR']))
 
 # # lack of penalties
     gameURL = config['GAME_URL'] + gameID + config['STATS']
