@@ -12,7 +12,7 @@ const Date = ({ games }) => {
     }, [])
 
     return (
-        <div>
+        <div className="date-container">
             <h1>{games[0].date}</h1>
             {timeSlots.map((games, index) => (
                 <TimeSlot key={index} gamesArray={games} />

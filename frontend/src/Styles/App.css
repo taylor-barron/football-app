@@ -1,0 +1,101 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+    background: rgb(70,70,105);
+    background: linear-gradient(90deg, rgba(70,70,105,1) 0%, rgba(59,95,115,1) 100%);
+}
+
+/************************************* Games Pages **************************************/
+
+/* Page Container */
+
+.page-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+/* Date */
+
+.date-container {
+
+    background: rgb(18, 18, 21);
+    margin: 80px 0px 0px 0px;
+    border-radius: 30px;
+    opacity: 0.8;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    max-width: 360px;
+    width: 90vw;
+
+}
+
+/* Game */
+
+.game-container {
+
+    background: rgb(12, 12, 21);
+    margin: 20px 20px 0px 20px;
+    border-radius: 15px;
+    width: 80vw;
+    max-width: 300px;
+}
+
+.teams-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.team-div {
+    opacity: 0.8;
+    width: 45%;
+}
+.home-team {
+    border-radius: 15px 0px 0px 0px;
+}
+.away-team {
+    border-radius: 0px 15px 0px 0px;
+}
+.between-teams {
+    width: 10%;
+    opacity: 0.8;
+}
+.h-rule {
+    width: 80%;
+}
+.teams-font{
+
+    font-family: 'Bebas Neue', cursive;
+    color: #fff;
+}
+.time-composite-container {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    margin: 10px 0px 0px 0px;
+}
+.time-composite-items-container {
+    width: 75%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}

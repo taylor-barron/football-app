@@ -11,25 +11,24 @@ const Game = ({ game }) => {
 
     return (
 
-        <div>
-            <div>
-                <div style={{backgroundColor:`${game.gameInfo.homeColor}`}}>
-                    <p style={{color:'white'}}>{game.gameInfo.homeTeam}</p>
+        <div className="game-container">
+            <div className="teams-container">
+                <div className="team-div home-team" style={{backgroundColor:`${game.gameInfo.homeColor}`}}>
+                    <p className="teams-font">{game.gameInfo.homeTeam}</p>
                 </div>
-                <div style={{backgroundColor:`${game.gameInfo.awayColor}`}}>
-                    <p style={{color:'white'}}>{game.gameInfo.awayTeam}</p>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <p>Start Time:</p>
-                    <p>{time}</p>
+                <div className="between-teams" style={{background:`linear-gradient(90deg, ${game.gameInfo.homeColor}, ${game.gameInfo.awayColor})`}}>VS</div>
+                <div className="team-div away-team" style={{backgroundColor:`${game.gameInfo.awayColor}`}}>
+                    <p className="teams-font">{game.gameInfo.awayTeam}</p>
                 </div>
             </div>
-            <div>
-                <div>
-                    <p>Composite Rating:</p>
-                    <p>{compositeScore}</p>
+            <div className="time-composite-container">
+                <div className="time-composite-items-container">
+                    <p className="teams-font">Start Time:</p>
+                    <p className="teams-font">{time}</p>
+                </div><hr className="h-rule"></hr>
+                <div className="time-composite-items-container">
+                    <p className="teams-font">Composite Rating:</p>
+                    <p className="teams-font">{compositeScore}</p>
                 </div>
             </div>
             <Button
