@@ -258,7 +258,6 @@ def calcExplosivePlays(gameJSON):
                                 rushLength = ''
                                 for idx in range(idx1 + len(sub1) + 1, idx2):
                                     rushLength = rushLength + playText[idx]
-                                print(rushLength)
                             
                             # handle exception for rush plays with loss or no gain
                             except:
@@ -530,8 +529,6 @@ def calcExplosivePlays(gameJSON):
     except Exception as e:
         print("individual play data not available", e)
         explosiveScore = 25
-
-    print(explosiveScore)
     
     return (explosiveScore / 1.6)
 
