@@ -1,7 +1,7 @@
 
 const GetGames = async (info) => {
 
-    const res = await fetch("http://localhost:4000/games", {
+    const res = await fetch(process.env.REACT_APP_HEROKU + "games", {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
