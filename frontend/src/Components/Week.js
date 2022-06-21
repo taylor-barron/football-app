@@ -1,9 +1,9 @@
 
-const Week = ({ week }) => {
+const Week = ({ week, year }) => {
 
     return (
         <div>
-            <h2>{ week }{' '}</h2>
+            <h2><a href={'/games/' + year + '/' + week}>{ week }{' '}</a></h2>
         </div>
     )
 }

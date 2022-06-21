@@ -1,6 +1,8 @@
 
 const MoreStats = ({ scoreRating, explosivenessScore, importanceScore, talentScore, penaltyScore }) => {
 
+    // format better
+
     return (
         <div>
             <div>

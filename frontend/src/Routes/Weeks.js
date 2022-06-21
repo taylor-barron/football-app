@@ -18,7 +18,7 @@ const Weeks = () => {
     return (
         <div>
             {weeks.map((week, index) => (
-                <Week key={index} week={week.name} />
+                <Week key={index} week={week.name} year={year} />
             ))}
         </div>
     )
