@@ -88,7 +88,8 @@ def getTimeAndScoreArrays(gameJSON):
 # calculates what percentage of game is over at time of score
 # usually should take (quarterArray[counter], timeArray[counter])
 def calcGamePercentage(quarter, currentTime):
-
+    
+    totalTimePercentage = 0
     if quarter == "1ST QUARTER":
         newTimeMarker = currentTime
         splitTimeMarker = (newTimeMarker.split(":"))
