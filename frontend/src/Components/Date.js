@@ -13,9 +13,10 @@ const Date = ({ games }) => {
 
     return (
         <div>
+            <h1>{games[0].date}</h1>
             {timeSlots.map((games, index) => (
                 <TimeSlot key={index} gamesArray={games} />
-            ))}
+            ))}<br></br>
         </div>
     )
 

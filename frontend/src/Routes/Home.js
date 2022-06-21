@@ -4,7 +4,7 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Welcome to Perfect Saturday,</h1>
+            <h1>Welcome to Unnamed,</h1>
             <p>
                 the anti-score college football website. 
             </p>
