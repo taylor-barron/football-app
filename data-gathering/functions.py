@@ -184,12 +184,10 @@ def calcGameClosenessScore(closenessScoreArray, timeStampArray):
         else:
             # calc percentage of game
             lengthOfScore = timeStampArray[counter] - previousTimeStamp
-            print(lengthOfScore, closenessScoreArray[counter])
             if timeStampArray[counter] <= 0:
                 lengthOfScore = 0
             # multiply times score
             totalScore += (lengthOfScore * closenessScoreArray[counter])
-            print(totalScore)
             previousTimeStamp = timeStampArray[counter]
             if timeStampArray[counter] == 100 or timeStampArray[counter] <= 0:
                 totalScore += 200
