@@ -1,0 +1,16 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.navigation-bar{
+
+    width: 100%;
+    position: fixed !important;
+    opacity: 0.98;
+    top: 0px;
+    z-index: 2;  
+}
+
+.navigation-text {
+
+    font-family: 'Bebas Neue', cursive;
+    color: #fff;}

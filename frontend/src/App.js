@@ -8,6 +8,8 @@ import Games from './Routes/Games';
 import "./Styles/App.css"
 import "./Styles/Games.css"
 import "./Styles/MoreStats.css"
+import "./Styles/NavigationBar.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
