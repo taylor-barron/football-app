@@ -12,8 +12,8 @@ const TimeSlot = ({ gamesArray }) => {
     }, [])
 
     return (
-        <div>
-            <h2>{gamesArray[0].timeSlot} Games</h2>
+        <div className="timeSlot-container">
+            <h2 className="timeSlot-text">{gamesArray[0].timeSlot} Games</h2>
             {games.map((game, index) => (
                 <Game key={index} game={game} />
             ))}

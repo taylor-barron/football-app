@@ -16,7 +16,7 @@ const Game = ({ game }) => {
                 <div className="team-div home-team" style={{backgroundColor:`${game.gameInfo.homeColor}`}}>
                     <p className="teams-font">{game.gameInfo.homeTeam}</p>
                 </div>
-                <div className="between-teams" style={{background:`linear-gradient(90deg, ${game.gameInfo.homeColor}, ${game.gameInfo.awayColor})`}}>VS</div>
+                <div className="between-teams" style={{background:`linear-gradient(90deg, ${game.gameInfo.homeColor}, ${game.gameInfo.awayColor})`}}><p className="between-teams-p"></p></div>
                 <div className="team-div away-team" style={{backgroundColor:`${game.gameInfo.awayColor}`}}>
                     <p className="teams-font">{game.gameInfo.awayTeam}</p>
                 </div>
@@ -31,10 +31,13 @@ const Game = ({ game }) => {
                     <p className="teams-font">{compositeScore}</p>
                 </div>
             </div>
-            <Button
-                text={showAllStats ? 'Less Ratings' : 'More Ratings'}
-                onClick={() => {setShowAllStats(!showAllStats)}}
-            />
+            <div className="button-container">
+                <Button
+                    text={showAllStats ? 'Less Ratings' : 'More Ratings'}
+                    cssClass={"more-stats-button"}
+                    onClick={() => {setShowAllStats(!showAllStats)}}
+                />
+            </div>
             {showAllStats && <MoreStats
                 scoreRating={game.gameInfo.scoreScore}
                 explosivenessScore={game.gameInfo.explosivenessScore}
@@ -49,3 +52,7 @@ const Game = ({ game }) => {
 }
 
 export default Game
+
+/*
+<div className="between-teams" style={{background:`linear-gradient(90deg, ${game.gameInfo.homeColor}, ${game.gameInfo.awayColor})`}}><p className="between-teams-p"></p></div>
+*/

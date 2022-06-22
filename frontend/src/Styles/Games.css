@@ -1,12 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-body {
-
-    background: rgb(70,70,105);
-    background: linear-gradient(90deg, rgba(70,70,105,1) 0%, rgba(59,95,115,1) 100%);
-}
-
 /************************************* Games Pages **************************************/
 
 /* Page Container */
@@ -48,6 +42,27 @@ body {
 
     font-family: 'Bebas Neue', cursive;
     color: #fff;
+
+    margin: 20px 0px 0px 0px;
+}
+
+/* TimeSlot */
+
+.timeSlot-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+
+}
+.timeSlot-text {
+
+    font-family: 'Bebas Neue', cursive;
+    color: #fff;
+
+    margin: 20px 0px 0px 40px;
 }
 
 /* Game */
@@ -71,18 +86,40 @@ body {
 }
 .team-div {
     opacity: 0.8;
-    width: 45%;
+    /*width: 45%;*/
+    width: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .home-team {
     border-radius: 15px 0px 0px 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
 }
 .away-team {
     border-radius: 0px 15px 0px 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
 }
-.between-teams {
+/*.between-teams {
     width: 10%;
+    height: 100%;
     opacity: 0.8;
 }
+.between-teams-p {
+    margin: 48.5px 0px 10px 0px;
+}*/
 .h-rule {
     width: 80%;
 }
@@ -90,6 +127,8 @@ body {
 
     font-family: 'Bebas Neue', cursive;
     color: #fff;
+
+    margin: 20px 30px 10px 30px;
 }
 .time-composite-container {
     
@@ -110,3 +149,33 @@ body {
     align-content: center;
     align-items: center;
 }
+
+/* Button */
+
+.button-container {
+
+    width: 100%;
+
+    margin: 10px 0px 0px 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.more-stats-button {
+
+    width: 125px;
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Bebas Neue', cursive;
+  }
