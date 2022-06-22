@@ -7,7 +7,7 @@ const Game = ({ game }) => {
     const [showAllStats, setShowAllStats] = useState(false)
 
     const time = ConvertTime(parseFloat(game.gameInfo.startTime))
-    const compositeScore = parseFloat(game.compositeScore).toFixed(3)
+    const compositeScore = Math.round(game.compositeScore*100)/100;
 
     return (
 
@@ -23,12 +23,12 @@ const Game = ({ game }) => {
             </div>
             <div className="time-composite-container">
                 <div className="time-composite-items-container">
-                    <p className="teams-font">Start Time:</p>
-                    <p className="teams-font">{time}</p>
+                    <p className="stats-font">Start Time:</p>
+                    <p className="stats-font">{time}</p>
                 </div><hr className="h-rule"></hr>
                 <div className="time-composite-items-container">
-                    <p className="teams-font">Composite Rating:</p>
-                    <p className="teams-font">{compositeScore}</p>
+                    <p className="stats-font">Composite Rating:</p>
+                    <p className="stats-font">{compositeScore}</p>
                 </div>
             </div>
             <div className="button-container">
