@@ -5,7 +5,7 @@ import Years from './Routes/Years';
 import Weeks from './Routes/Weeks';
 import Games from './Routes/Games';
 
-import "./Styles/App.css"
+import "./Styles/Games.css"
 
 function App() {
   return (
