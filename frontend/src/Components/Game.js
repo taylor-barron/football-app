@@ -36,6 +36,7 @@ const Game = ({ game }) => {
                     text={showAllStats ? 'Less Ratings' : 'More Ratings'}
                     cssClass={"more-stats-button"}
                     onClick={() => {setShowAllStats(!showAllStats)}}
+                    color={showAllStats ? 'red' : 'black' }
                 />
             </div>
             {showAllStats && <MoreStats
