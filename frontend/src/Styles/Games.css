@@ -3,6 +3,16 @@
 
 /************************************* Games Pages **************************************/
 
+
+/* Navbar */
+
+.navImg {
+
+    height: 45px;
+    width: auto;
+    margin: 0px 10px 0px 0px;
+}
+
 /* Page Container */
 
 .page-container {

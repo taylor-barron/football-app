@@ -8,7 +8,15 @@ const NavigationBar = ({css, text, logo, logoCss}) => {
       
       <Navbar bg="dark" expand="lg" className={`${css} navbar-dark` }>
         <Container>
-          <Navbar.Brand className={`${text}`} href="/">Perfect Saturday</Navbar.Brand>
+          <Navbar.Brand
+            className={`${text}`}
+            href="/">
+            <img
+              src={logo}
+              className={logoCss}
+            />{' '}
+            Perfect Saturday
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
