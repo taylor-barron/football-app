@@ -20,8 +20,8 @@ const NavigationBar = ({css, text, logo, logoCss}) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link className={`${text}`} href="#home">Home</Nav.Link>
-              <Nav.Link className={`${text}`} href="#link">Link</Nav.Link>              
+              <Nav.Link className={`${text}`} href="/">Home</Nav.Link>
+              <Nav.Link className={`${text}`} href="#">About</Nav.Link>              
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -44,7 +44,7 @@
     align-content: center;
     align-items: center;
 
-    max-width: 360px;
+    max-width: 400px;
     width: 90vw;
 
 }
@@ -60,7 +60,7 @@
 
 .timeSlot-container {
 
-    width: 100%;
+    width: 85%;
 
     display: flex;
     flex-direction: column;
@@ -75,16 +75,16 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: flex-end;
-    align-items: baseline;
+    align-items: center;
 }
 .timeSlot-text {
 
     font-family: 'Bebas Neue', cursive;
     color: #fff;
 
-    margin: 20px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 /* Game */
@@ -95,7 +95,7 @@
     margin: 20px 20px 0px 20px;
     border-radius: 15px;
     width: 80vw;
-    max-width: 300px;
+    max-width: 350px;
 }
 
 .teams-container {
