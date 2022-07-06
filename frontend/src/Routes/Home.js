@@ -10,7 +10,6 @@ const Home = () => {
                 the anti-score college football website. 
             </p>
             <Years />
-            <a href="/years">Check out ratings here</a>
         </div>
     )
 }

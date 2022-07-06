@@ -5,15 +5,13 @@ import GetWeeks from "../Functions/GetWeeks";
 import Week from "./Week";
 
 const Year = ({ year }) => {
-    const [ showWeeks, setShowWeeks ] = useState(true)
+    const [ showWeeks, setShowWeeks ] = useState(false)
     const [ weeks, setWeeks ] = useState([])
 
     useEffect(() => {
 
         GetWeeks( year ).then((res) => {
             setWeeks(res)
-            console.log(weeks)
-            console.log(year)
         })
     }, [])
 
@@ -29,7 +27,7 @@ const Year = ({ year }) => {
                 />
             </div>
             {showWeeks && weeks.map((week, index) => (
-                <Week key={index} week={week} year={year} />
+                <Week key={index} week={week.name} year={year} />
             ))}
         </div>
     )
