@@ -9,6 +9,7 @@ import "./Styles/App.css"
 import "./Styles/Games.css"
 import "./Styles/MoreStats.css"
 import "./Styles/NavigationBar.css"
+import "./Styles/Home.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {

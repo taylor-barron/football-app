@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Years from "./Years";
 
 const Home = () => {
 
@@ -8,6 +9,7 @@ const Home = () => {
             <p>
                 the anti-score college football website. 
             </p>
+            <Years />
             <a href="/years">Check out ratings here</a>
         </div>
     )

@@ -22,6 +22,7 @@ const NavigationBar = ({css, text, logo, logoCss}) => {
             <Nav className="me-auto">
               <Nav.Link className={`${text}`} href="/">Home</Nav.Link>
               <Nav.Link className={`${text}`} href="#">About</Nav.Link>              
+              <Nav.Link className={`${text}`} href="#">Recap</Nav.Link>            
             </Nav>
           </Navbar.Collapse>
         </Container>
