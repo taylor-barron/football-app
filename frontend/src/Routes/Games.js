@@ -30,7 +30,7 @@ const Games = () => {
             />
             <div className="page-container">
                 {dates.map((games, index) => (
-                    <Date key={index} games={games} />
+                    <Date key={index} index={index} games={games} />
                 ))}
                 <br></br>
             </div>

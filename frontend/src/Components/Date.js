@@ -3,7 +3,7 @@ import TimeSlot from "./TimeSlot";
 import SortByTimeSlot from "../Functions/SortByTimeSlot";
 import ConvertDate from "../Functions/ConvertDate";
 
-const Date = ({ games }) => {
+const Date = ({ index, games }) => {
     const [ timeSlots, setTimeSlots ] = useState([])
     const [ date, setDate ] = useState("")
 
@@ -15,14 +15,29 @@ const Date = ({ games }) => {
 
     }, [])
 
-    return (
-        <div className="date-container">
-            <h1 className="date-text">{date}</h1>
-            {timeSlots.map((games, index) => (
-                <TimeSlot key={index} gamesArray={games} />
-            ))}<br></br>
-        </div>
-    )
+    if (index === 0) {
+
+        return (
+            <div className="first-date-container">
+                <h1 className="date-text">{date}</h1>
+                {timeSlots.map((games, index) => (
+                    <TimeSlot key={index} index={index} gamesArray={games} />
+                ))}<br></br>
+            </div>
+        )
+
+    } else {
+
+        return (
+            <div className="date-container">
+                <h1 className="date-text">{date}</h1>
+                {timeSlots.map((games, index) => (
+                    <TimeSlot key={index} index={index} gamesArray={games} />
+                ))}<br></br>
+            </div>
+        )
+
+    }
 
 }
 

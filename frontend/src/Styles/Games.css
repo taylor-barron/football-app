@@ -31,10 +31,27 @@
 
 /* Date */
 
+.first-date-container {
+
+    background: rgb(18, 18, 21);
+    margin: 120px 0px 0px 0px;
+    border-radius: 30px;
+    opacity: 0.8;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    max-width: 400px;
+    width: 90vw;
+
+}
 .date-container {
 
     background: rgb(18, 18, 21);
-    margin: 80px 0px 0px 0px;
+    margin: 50px 0px 0px 0px;
     border-radius: 30px;
     opacity: 0.8;
 
@@ -58,6 +75,19 @@
 
 /* TimeSlot */
 
+.first-timeSlot-container {
+
+    width: 85%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    margin: 15px 0px 0px 0px
+
+}
 .timeSlot-container {
 
     width: 85%;
@@ -67,6 +97,8 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+
+    margin: 10px 0px 0px 0px
 
 }
 .timeSlot-header-container {
