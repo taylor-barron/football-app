@@ -38,7 +38,7 @@ app.get('/years', (req, res) => {
 app.post('/weeks', (req, res) => {
     const uri = process.env.MONGO_DB
     const client = new MongoClient(uri);
-    year = req.body.year.year
+    year = req.body.year
 
     async function getWeeks(client, year, res) {
 

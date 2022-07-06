@@ -1,5 +1,7 @@
 # football-app
 
+Current Live version: https://football-app-dun.vercel.app/
+
 This web application is designed to rate football games that are live or have already been played in order to help the user determine which games will be most entertaining to watch.
 
 The idea for this comes from the difficulty in enjoying a late summer to early winter Saturday in the best way possible. My entire life I have wanted to watch the best college footbal games that are played AND I want to do other things. Whether those other things are family, friends, work, the yard, golf, intramurals, boating, hiking, or whatever else you like that I don't, all college football fans have something that they would rather be doing/get done instead of watching commercials all day. This app allows you to record every college football game and let the app tell you which games to watch without telling you anything about it. This app takes the risk out of recording and gives back hours of your Saturdays from watching ads.
