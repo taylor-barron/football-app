@@ -246,6 +246,9 @@ def calcExplosivePlays(gameJSON):
                             for idx in range(idx1 + len(sub1) + 1, idx2):
                                 rushLength = rushLength + playText[idx]
 
+                            # if rushLength < 0:
+                            #     rushLength = 0
+
                         # handle alternate wording for rush plays
                         except:
                             try:
@@ -260,30 +263,58 @@ def calcExplosivePlays(gameJSON):
                                 rushLength = ''
                                 for idx in range(idx1 + len(sub1) + 1, idx2):
                                     rushLength = rushLength + playText[idx]
-                            
-                            # handle exception for rush plays with loss or no gain
+                            # new wordingTODAY
                             except:
                                 try:
-                                    if "loss" in playText or "no gain" in playText:
-                                        rushLength = 0
+                                    if "right for" in playText:
+                                        sub1 = " rush right for "
+                                        sub2 = " yard"
+                                        # get index of substrings
+                                        idx1 = playText.index(sub1)
+                                        idx2 = playText.index(sub2)
 
-                                # handle unknown exceptions by logging details to console
-                                except Exception as e:
-                                    print("rush error", e)
-                                    print(playText)
+                                    elif "left for" in playText:
+                                        sub1 = " rush left for "
+                                        sub2 = " yard"
+                                        # get index of substrings
+                                        idx1 = playText.index(sub1)
+                                        idx2 = playText.index(sub2)
 
-                            rushLength = int(rushLength)
+                                    elif "middle for" in playText:
+                                        sub1 = " rush middle for"
+                                        sub2 = " yard"
+                                        # get index of substrings
+                                        idx1 = playText.index(sub1)
+                                        idx2 = playText.index(sub2)
 
-                            if rushLength > 50:
-                                explosiveScore += 5
-                            elif rushLength > 40:
-                                explosiveScore += 4
-                            elif rushLength > 30:
-                                explosiveScore += 3
-                            elif rushLength > 20:
-                                explosiveScore += 2
-                            elif rushLength >= 10:
-                                explosiveScore += 1
+                                    # iterate through string to extract rush
+                                    rushLength = 0
+                                    for idx in range(idx1 + len(sub1) + 1, idx2):
+                                        rushLength =  int(playText[idx])
+                            
+                                # handle exception for rush plays with loss or no gain
+                                except:
+                                    try:
+                                        if "loss" in playText or "no gain" in playText:
+                                            rushLength = 0
+
+                                    # handle unknown exceptions by logging details to console
+                                    except Exception as e:
+                                        print("rush error line 272", e)
+                                        print(playText)
+
+                                rushLength = int(rushLength)
+
+                                if rushLength > 50:
+                                    explosiveScore += 5
+                                elif rushLength > 40:
+                                    explosiveScore += 4
+                                elif rushLength > 30:
+                                    explosiveScore += 3
+                                elif rushLength > 20:
+                                    explosiveScore += 2
+                                elif rushLength >= 10:
+                                    explosiveScore += 1
                 
                     elif "pass complete" in playText or "complete to" in playText:
                         try:

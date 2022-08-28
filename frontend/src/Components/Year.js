@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import GetWeeks from "../Functions/GetWeeks";
 import Week from "./Week";
+import SortByWeeks from "../Functions/SortByWeeks";
 
 const Year = ({ year }) => {
     const [ showWeeks, setShowWeeks ] = useState(false)
@@ -11,7 +12,7 @@ const Year = ({ year }) => {
     useEffect(() => {
 
         GetWeeks( year ).then((res) => {
-            setWeeks(res)
+            setWeeks(SortByWeeks(res))
         })
     }, [])
 
