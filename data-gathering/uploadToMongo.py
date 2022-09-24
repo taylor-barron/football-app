@@ -41,8 +41,9 @@ def getBasicGameInfo(gameID):
     time = float(time)
     minutes = timeToSplit[1]
     minutes = float(minutes)
+    print("minutes: ", minutes)
     if minutes != 0:
-        time = time + 0.5
+        time = time + (minutes / 60)
 
     # determine timeslot
     if time <= 13.5:

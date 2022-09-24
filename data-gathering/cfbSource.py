@@ -1,3 +1,4 @@
+from turtle import home
 import cfbd
 import functions
 import os
@@ -142,18 +143,35 @@ def calcImportanceScore(homeTeam, awayTeam, date):
         homeWinPercentage = homeTeamWins / homeGamesPlayed
 
     # factor in historical importance until 10 games played
-        if homeGamesPlayed > 10:
+        if homeGamesPlayed >= 10:
             homeImportanceScore = homeWinPercentage
         else:
             # get some historical data to combine with win percentage
             # win percentage counts for % of 10 games played
-            homeImportanceScore = 20
+            yearsToGet = 10 - homeGamesPlayed
 
-        # delete later when correct else is written for above
-        homeImportanceScore = homeWinPercentage
+            counter = 1
+            totalPreviousYearHomeWins = 0
+            totalPreviousYearHomeLosses = 0
+            while counter < yearsToGet:
+                homeTeamJSON = api_instance.get_team_records(year=(date - counter), team=homeTeam)
+
+                previousYearHomeTeamWins = int(homeTeamJSON[0]._total['wins']) 
+                totalPreviousYearHomeWins = previousYearHomeTeamWins + totalPreviousYearHomeWins
+                
+                previousYearHomeTeamLosses = int(homeTeamJSON[0]._total['losses'])
+                totalPreviousYearHomeLosses = previousYearHomeTeamLosses + totalPreviousYearHomeLosses
+
+                counter += 1
+
+            totalPreviousGamesPlayed = totalPreviousYearHomeWins + totalPreviousYearHomeLosses
+            homePreviousYearsWinPercentage = totalPreviousYearHomeWins / totalPreviousGamesPlayed
+
+            homeImportanceScore = ((homeWinPercentage * homeGamesPlayed) + homePreviousYearsWinPercentage * (10 - homeGamesPlayed)) / 10
     
-    except:
+    except Exception as e:
         homeImportanceScore = 0
+        print(e)
     
     try:
         awayTeamJSON = api_instance.get_team_records(year=date, team=awayTeam)
@@ -167,10 +185,26 @@ def calcImportanceScore(homeTeam, awayTeam, date):
         if awayGamesPlayed > 10:
             awayImportanceScore = awayWinPercentage
         else:
-            awayImportanceScore = 20
+            yearsToGet = 10 - homeGamesPlayed
 
-        # delete later when a correct else is written
-        awayImportanceScore = awayWinPercentage
+            counter = 1
+            totalPreviousYearAwayWins = 0
+            totalPreviousYearAwayLosses = 0
+            while counter < yearsToGet:
+                awayTeamJSON = api_instance.get_team_records(year=(date - counter), team=awayTeam)
+
+                previousYearAwayTeamWins = int(awayTeamJSON[0]._total['wins'])
+                totalPreviousYearAwayWins = previousYearAwayTeamWins + totalPreviousYearAwayWins
+
+                previousYearAwayTeamLosses = int(awayTeamJSON[0]._total['losses'])   
+                totalPreviousYearAwayLosses = previousYearAwayTeamLosses + totalPreviousYearAwayLosses
+
+                counter += 1
+
+            totalPreviousGamesPlayed = totalPreviousYearAwayWins + totalPreviousYearAwayLosses
+            awayPreviousYearsWinPercentage = totalPreviousYearAwayWins / totalPreviousGamesPlayed
+
+            awayImportanceScore = ((awayWinPercentage * awayGamesPlayed) + awayPreviousYearsWinPercentage * (10 - awayGamesPlayed)) / 10
     
     except:
         awayImportanceScore = 0

@@ -15,13 +15,22 @@ def getTimeAndScoreArrays(gameJSON):
     timeArray = []
 
     # get all scores
-    for quarter in gameJSON[config['QUARTERS']]:
-        for score in quarter[config['ALL_SCORES']]:
-            # get time, get score differential
-            awayArray.append(int(score[config['AWAY_SCORES']]))
-            homeArray.append(int(score[config['HOME_SCORES']]))
-            quarterArray.append(quarter[config['WHICH_QUARTER']])
-            timeArray.append(score[config['TIME_OF_SCORE']])
+    try:
+        for quarter in gameJSON[config['QUARTERS']]:
+            for score in quarter[config['ALL_SCORES']]:
+                # get time, get score differential
+                awayArray.append(int(score[config['AWAY_SCORES']]))
+                homeArray.append(int(score[config['HOME_SCORES']]))
+                quarterArray.append(quarter[config['WHICH_QUARTER']])
+                timeArray.append(score[config['TIME_OF_SCORE']])
+    except:
+        timeStampArray = [0, 0]
+        closenessScoreArray = [0, 0]
+        currentCloseness = 0
+        print('Not able to assign teams in scoring JSON')
+        # try to print team names here
+        # problem getting e mich or lousianna name
+        return timeStampArray, closenessScoreArray, currentCloseness
 
 
     # process data for closeness

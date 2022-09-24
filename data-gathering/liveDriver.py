@@ -1,4 +1,3 @@
-import os
 from dotenv import dotenv_values, load_dotenv
 from calendar import c
 import requests
@@ -55,14 +54,8 @@ for game in games:
             awayTeam = gameJSON[config['TEAM_SELECTOR_1']][config['TEAM_SELECTOR_2']][0][config['TEAM_SELECTOR_3']]
             homeTeam = gameJSON[config['TEAM_SELECTOR_1']][config['TEAM_SELECTOR_2']][1][config['TEAM_SELECTOR_3']]
         except Exception as e:
-            print('away team name error', e)
+            print('team name error', e)
             continue
-
-    # try:
-    #     homeTeam = gameJSON[config['TEAM_SELECTOR_1']][config['TEAM_SELECTOR_2']][1][config['TEAM_SELECTOR_3']]
-    # except Exception as e:
-    #     print('home team name error', e)
-    #     continue
 
 # # generate arrays of scores and the percentage of the game completed when scores take place + end of game closeness # #
 
