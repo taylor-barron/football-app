@@ -3,7 +3,7 @@ const GetWeeks = async (year) => {
 
     const yearJSON = { year }
 
-    const res = await fetch( process.env.REACT_APP_HEROKU + "weeks", {
+    const res = await fetch( "http://localhost:4000/weeks", {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
