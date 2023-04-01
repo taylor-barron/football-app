@@ -8,6 +8,7 @@ const Date = ({ index, games }) => {
     const [ date, setDate ] = useState("")
 
     useEffect(() => {
+        console.log(games)
         
         setTimeSlots(SortByTimeSlot( games ))
 
