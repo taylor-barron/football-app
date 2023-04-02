@@ -1,38 +1,14 @@
-
-// const SortByTimeSlot = (games) => {
-
-//     let allTimeSlots = []
-//     let timeSlot = [games[0]]
-
-//     for (let i = 1; i < games.length; i++) {
-
-//         if ( games[i].timeSlot === games[i-1].timeSlot ) {
-//             timeSlot.push(games[i]);
-//         } else {
-//             allTimeSlots.push(timeSlot)
-//             timeSlot = []
-//             timeSlot.push(games[i])
-//         }
-//     }
-//     allTimeSlots.push(timeSlot)
-
-//     return allTimeSlots
-// }
-
-// export default SortByTimeSlot
-
 const SortByWeeks = (weeks) => {
 
-    let toOrderWeeks = []
-    console.log(weeks)
+    weeks.sort((a, b) => {
 
-    for (let i = 1; i < weeks.length; i++) {
-        const weekNumber = weeks[i].name.substring(4)
+        const numA = parseInt(a.name.replace('week', ''));
+        const numB = parseInt(b.name.replace('week', ''));
 
-        console.log(weekNumber)
-    }
+        return numA - numB;
+    });
 
-    return (weeks)
+    return (weeks);
 }
 
-export default SortByWeeks
+export default SortByWeeks;

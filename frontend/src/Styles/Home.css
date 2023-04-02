@@ -1,4 +1,112 @@
+/* Page Container */
+
+.page-container-m {
+    
+    width: 100%;
+    height: 100%;
+
+    margin-top: 8%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.content-c {
+
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.p-c {
+    padding-top: 30px;
+}
+
+.years-c {
+    
+    width: 100%;
+    height: 100%;
+
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.weeks-c {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.year-c {
+    
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-end;
+    align-items: flex-end;
+}
+
+.week-c {
+
+    margin: 0 5px;
+}
+
+.week-c a {
+
+    text-decoration: none;
+    color: #151414;
+}
+
+.week-c a:hover {
+
+    text-decoration: underline;
+    color: #323030;
+}
+
+.year-hr {
+
+    width: 800px;
+    margin: 0;
+}
+
+.content-c p {
+
+    color: #c6c6c6;
+}
 
 /* Button */
 
-.show-weeks-button {}
+.show-weeks-button {
+
+    width: 125px;
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Bebas Neue', cursive;
+    transition: background-color 0.3s ease;
+}
