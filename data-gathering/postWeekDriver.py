@@ -9,7 +9,7 @@ import functions
 import uploadToMongo
 
 load_dotenv()
-config = dotenv_values("data-gathering/.env")
+config = dotenv_values(".env")
 
 ## GET SCORES ##
  #"week1"
@@ -110,3 +110,7 @@ for game in games:
 
     # # results print, later change to update db
     print("\n", homeTeam, awayTeam, finalScoreScore, "\nImportance: ", finalImportanceScore, "Closeness: ", finalClosenessScore, "Comeback: ", finalComebackScore, "\nExplosive:", finalExplosivePlaysScore, "Spread: ", finalSpreadScore, "Talent: ", finalTalentScore, "\nPenalty Score:", finalPenaltyScore)
+
+# # CHANGE ENV VARS # #
+
+# # SET CRON FOR NEXT WEEK # #

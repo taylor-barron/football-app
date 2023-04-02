@@ -8,7 +8,7 @@ import functions
 import uploadToMongo
 
 load_dotenv()
-config = dotenv_values("data-gathering/.env")
+config = dotenv_values(".env")
 
 ## GET SCORES ##
  #"week1"
@@ -25,6 +25,8 @@ soup = BeautifulSoup(page.content, "html.parser")
 results = soup.find(id=config['STARTING_PAGE_SELECTOR'])
 
 games = results.find_all("div", class_=config['STARTING_PAGE_CLASS'])
+
+# # SET UP IF STATEMENT IF GAME.length.quarter != 6
 
 # get game id
 for game in games:
@@ -124,3 +126,9 @@ for game in games:
 
     # # results print, later change to update db
     print("\n", homeTeam, awayTeam, finalScoreScore, "\nImportance: ", finalImportanceScore, "Closeness: ", finalClosenessScore, "Comeback: ", finalComebackScore, "\nExplosive:", finalExplosivePlaysScore, "Spread: ", finalSpreadScore, "Talent: ", finalTalentScore, "\nPenalty Score:", finalPenaltyScore)
+
+# # IF LAST GAME FOR DAY == 6 SET CRON FOR NEXT DAY'S FIRST GAME
+
+# # IF LAST GAME FOR WEEK == 6 SET CRON FOR POST WEEK DRIVER MID DAY SUNDAY FOR CORRECTIONS
+
+# # ELSE RUN AGAIN

@@ -5,7 +5,7 @@ import os
 from dotenv import dotenv_values, load_dotenv
 
 load_dotenv()
-config = dotenv_values("data-gathering/.env")
+config = dotenv_values(".env")
 
 # Helper method to format teams from website format to API format #
 def formatTeam(team):

@@ -2,7 +2,7 @@ import os
 from dotenv import dotenv_values, load_dotenv
 
 load_dotenv()
-config = dotenv_values("data-gathering/.env")
+config = dotenv_values(".env")
 
 # get scores and times of scores
 def getTimeAndScoreArrays(gameJSON):

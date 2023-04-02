@@ -4,6 +4,9 @@
 # ignore test file
 test.py
 
+# ignore pycache
+data-gathering/__pycache__/
+
 # ignore all node modules
 middleware/node_modules
 frontend/node_modules
