@@ -1,7 +1,8 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-require('dotenv').config();
+const session = require('express-session');
 const { mongoose, MongoClient } = require("mongodb");
 
 app.use(cors());
@@ -9,6 +10,14 @@ app.use(express.json());
 
 const uri = process.env.MONGO_DB
 const client = new MongoClient(uri);
+
+app.use(session({
+
+    secret: 'my-secret-key',
+    resave: false,
+    saveUninitialized: true
+    
+}));
 
 //--------------------------------------------- GETs ------------------------------------------------//
 

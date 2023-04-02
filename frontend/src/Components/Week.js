@@ -1,18 +1,16 @@
-
 const Week = ({ week, year }) => {
 
+    let weekNumber = week.replace('week', '');
+
     return (
-        <div>
-            <h2>{<a href={'/games/' + year + '/' + week}>{ week }{' '}</a>}</h2>
+
+        <div className="week-c">
+
+            <h3>{<a href={'/games/' + year + '/' + week}>{ weekNumber }{' '}</a>}</h3>
+
         </div>
-    )
+
+    );
 }
 
 export default Week;
-
-/*
-
-        <div>
-            <h2><a href={'/games/' + year + '/' + week}>{ week }{' '}</a></h2>
-        </div>
-*/

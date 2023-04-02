@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Button from "./Button";
 import GetWeeks from "../Functions/GetWeeks";
 import Week from "./Week";
 import SortByWeeks from "../Functions/SortByWeeks";
 
 const Year = ({ year }) => {
-    const [ showWeeks, setShowWeeks ] = useState(false)
+
     const [ weeks, setWeeks ] = useState([])
 
     useEffect(() => {
@@ -14,24 +13,30 @@ const Year = ({ year }) => {
         GetWeeks( year ).then((res) => {
             setWeeks(SortByWeeks(res))
         })
+
     }, [])
 
     return (
         <div>
-            <div>
-                <h2><a href={'/weeks/' + year}>{ year }{' '}</a></h2>
-                <Button
-                    text={"Show Weeks"}
-                    cssClass={"show-weeks-button"}
-                    onClick={() => {setShowWeeks(!showWeeks)}}
-                    color={"red"}
-                />
+
+            <div className="year-c">
+
+                <h2>{ year }{' '}</h2>
+
+                <div className="weeks-c">
+                    {weeks.map((week, index) => (
+
+                        <Week key={index} week={week.name} year={year} />
+
+                    ))}
+                </div>                
+
             </div>
-            {showWeeks && weeks.map((week, index) => (
-                <Week key={index} week={week.name} year={year} />
-            ))}
+
+            <hr className="year-hr"></hr>
+
         </div>
-    )
+    );
 }
 
 export default Year;
