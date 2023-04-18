@@ -5,6 +5,8 @@ const cors = require("cors");
 const session = require('express-session');
 const { mongoose, MongoClient } = require("mongodb");
 
+console.log("mongodb uri", process.env.MONGO_DB)
+
 app.use(cors());
 app.use(express.json());
 
