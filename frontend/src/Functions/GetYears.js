@@ -8,7 +8,7 @@ const GetYears = async () => {
     }
     })*/
 
-    const res = await fetch("http://localhost:4000/years", {
+    const res = await fetch(/*"http://localhost:4000/years"*/process.env.AWS + "years", {
         method: 'GET',
         headers: {
         'Content-type': 'application/json',

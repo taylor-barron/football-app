@@ -28,6 +28,8 @@ app.get('/years', (req, res) => {
     const uri = process.env.MONGO_DB
     const client = new MongoClient(uri);
 
+    console.log(res)
+
     async function getYears(client, res) {
 
         try {
@@ -93,5 +95,5 @@ app.post('/games', (req, res) => {
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
-    console.log(`Listening on http://localhost:${port}/`);
+    console.log(`Listening on port ${port}`);
   });
