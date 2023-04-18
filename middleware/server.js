@@ -92,7 +92,7 @@ app.post('/games', (req, res) => {
     getGames(client, year, week, res)
 })
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 443
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
